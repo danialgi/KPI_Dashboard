@@ -128,4 +128,7 @@ with st.sidebar.form(key='filter_form'):
     query_load = f"SELECT A.*, B.ItemCode, B.ItemDesc1, C.user_name, D.Custcode, D.Custname FROM tblShipmentDetails AS A JOIN tblMasterItem AS B ON A.ItemID = B.ItemID JOIN uvw_userlogin AS C ON A.LastUpdatedBy= C.user_id JOIN tblMasterOwner AS D ON B.CustID=D.Custid WHERE A.DateLastUpdated BETWEEN '{start_datetime}' AND '{end_datetime}';"
     submitted = st.form_submit_button('Filter')
 
+df = pd.read_sql(query_receive, con=engine)
+df.columns = range(df.shape[1])
+df
 
