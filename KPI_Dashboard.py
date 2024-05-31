@@ -27,7 +27,7 @@ st.write("🚚 Genuine Inside (M) Sdn. Bhd.")
 st.title("KPI Dashboard 📊")
 "_________________________________________________________"
 
-weight_file = r'C:\Users\Danial Azrai\Downloads\WMS Item_Weights.xlsx'
+weight_file = 'WMS Item_Weights.xlsx'
 df_weight = pd.read_excel(weight_file, engine='openpyxl')
 df_weight = df_weight.drop_duplicates(subset=['Product'], keep='first')
 
