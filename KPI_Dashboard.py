@@ -18,6 +18,7 @@ from io import BytesIO
 import calendar
 from datetime import datetime, date, time
 
+st.cache_data.clear()
 today_date = datetime.now().strftime('%Y-%m-%d')
 current_datetime = datetime.now()
 
@@ -26,7 +27,7 @@ st.write("🚚 Genuine Inside (M) Sdn. Bhd.")
 st.title("KPI Dashboard 📊")
 "_________________________________________________________"
 
-weight_file = 'WMS Item_Weights.xlsx'
+weight_file = r'C:\Users\Danial Azrai\Downloads\WMS Item_Weights.xlsx'
 df_weight = pd.read_excel(weight_file, engine='openpyxl')
 df_weight = df_weight.drop_duplicates(subset=['Product'], keep='first')
 
