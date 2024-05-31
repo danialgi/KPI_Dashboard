@@ -1,0 +1,11 @@
+pandas
+plotly
+openpyxl
+lxml
+numpy
+natsort
+xlsxwriter
+SQLAlchemy
+pymssql
+mssql
+urllib
