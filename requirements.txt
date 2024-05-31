@@ -8,4 +8,4 @@ xlsxwriter
 SQLAlchemy
 pymssql
 mssql
-urllib
+urllib3
