@@ -130,7 +130,7 @@ with st.sidebar.form(key='filter_form'):
 
 def check_db_connection(host, user, password, database):
     try:
-        connection = mysql.connector.connect(
+        connection = mssql.connector.connect(
             host=host,
             user=user,
             password=password,
@@ -141,7 +141,7 @@ def check_db_connection(host, user, password, database):
         cursor.close()
         connection.close()
         return True
-    except mysql.connector.Error:
+    except mssql.connector.Error:
         return False
 
 if check_db_connection(hostname, username, password, dbname):
