@@ -110,7 +110,6 @@ port = "1433"
 dbname = "SHWMSDBV2"
 encoded_password = quote_plus(password)
 engine = create_engine(f"mssql+pymssql://{username}:{encoded_password}@{hostname}:{port}/{dbname}")
-session = sessionmaker(bind=engine)()
 metadata = MetaData()
 metadata.create_all(bind=engine)
 
