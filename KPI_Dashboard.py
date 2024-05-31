@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
+from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, MetaData
 from sqlalchemy.orm import sessionmaker, aliased
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.sql import join
@@ -111,6 +111,8 @@ dbname = "SHWMSDBV2"
 encoded_password = quote_plus(password)
 engine = create_engine(f"mssql+pymssql://{username}:{encoded_password}@{hostname}:{port}/{dbname}")
 session = sessionmaker(bind=engine)()
+metadata = MetaData()
+metadata.create_all(bind=engine)
 
 st.sidebar.write("Select Date: ")
 with st.sidebar.form(key='filter_form'):
