@@ -128,24 +128,7 @@ with st.sidebar.form(key='filter_form'):
     query_load = f"SELECT A.*, B.ItemCode, B.ItemDesc1, C.user_name, D.Custcode, D.Custname FROM tblShipmentDetails AS A JOIN tblMasterItem AS B ON A.ItemID = B.ItemID JOIN uvw_userlogin AS C ON A.LastUpdatedBy= C.user_id JOIN tblMasterOwner AS D ON B.CustID=D.Custid WHERE A.DateLastUpdated BETWEEN '{start_datetime}' AND '{end_datetime}';"
     submitted = st.form_submit_button('Filter')
 
-def check_db_connection(host, user, password, database):
-    try:
-        connection = mssql.connector.connect(
-            host=host,
-            user=user,
-            password=password,
-            database=database
-        )
-        cursor = connection.cursor()
-        cursor.execute("SELECT 1")  # Execute a simple query
-        cursor.close()
-        connection.close()
-        return True
-    except mssql.connector.Error:
-        return False
-
-if check_db_connection(hostname, username, password, dbname):
-    print("Database connection is active.")
-else:
-    print("Database connection failed.")
+df = pd.read_sql(query_receive, con=engine)
+df.columns = range(df.shape[1])
+df
 
